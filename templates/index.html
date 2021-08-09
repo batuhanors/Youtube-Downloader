@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form action="" method="post" onsubmit="return false">
+        <h3>Youtube Downloader</h3>
+        <div class="search">
+          <input
+            type="text"
+            id="url"
+            autocomplete="off"
+            placeholder="Youtube URL'sini girin"
+          />
+          <button type="submit" onclick=" download() ">İndir</button>
+        </div>
+      </form>
+
+      <div class="loader">
+        <div class="lds-facebook">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <p class="txt">İşleminiz Gerçekleştiriliyor...</p>
+      </div>
+
+      <div class="result" style="display: none">
+        <div class="video-item">
+          <img src="" alt="" id="thumbnail" />
+          <div class="video-details">
+            <div class="title" id="title"></div>
+            <div class="author">
+              <span>Yükleyen:</span> <em id="author"></em>
+            </div>
+            <div class="length"><span>Süre:</span> <em id="length"></em></div>
+            <div class="view">
+              <span>Görüntülenme:</span> <em id="views"></em>
+            </div>
+          </div>
+        </div>
+        <ul class="lower-form" id="sources" style="display: none"></ul>
+      </div>
+
+      <template id="item">
+        <li>
+          <div class="quality">
+            <span>Kalite</span>
+            <em>{resolution}</em>
+          </div>
+          <div class="size">
+            <span>Boyut</span>
+            <em>{size}</em>
+          </div>
+          <a href="{url}&title={title}" download="{title}" target="_blank"
+            >İndir</a
+          >
+        </li>
+      </template>
+    </div>
+    <footer class="footer"><h3>Created by Batuhan Örs</h3></footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      let sources = $("#sources");
+      function download() {
+        $(".loader").show();
+        let url = $("#url").val();
+        $.get(
+          "/api/youtube?url=" + url,
+          function (response) {
+            $(".result").show();
+            $(".lower-form").show();
+            $("#thumbnail").prop("src", response.info.thumbnail);
+            $("#title").text(response.info.title);
+            $("#author").text(response.info.author);
+            $("#length").text(response.info.length);
+            $("#views").text(response.info.views);
+            $(".loader").hide();
+
+            $.each(response.sources, function (key, e) {
+              let item = $("#item").html();
+              item = item
+                .replace("{resolution}", e.resolution)
+                .replace("{size}", e.size)
+                .replaceAll("{title}", response.info.title);
+              sources.append(item);
+            });
+            sources.show();
+          },
+
+          "json"
+        );
+      }
+    </script>
+  </body>
+</html>

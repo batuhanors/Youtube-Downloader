@@ -1,0 +1,207 @@
+@import "https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap";
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border: 0;
+  outline: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+html,
+body {
+  font-family: "Mulish", sans-serif;
+  color: azure;
+  background-color: #343a40;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  margin-top: 10rem;
+}
+
+form {
+  text-align: center;
+}
+form h3 {
+  font-size: 50px;
+  font-weight: 900;
+  margin-bottom: 30px;
+}
+form .search {
+  display: flex;
+  width: 700px;
+}
+form .search input {
+  flex: 1;
+  height: 50px;
+  border-radius: 50px 0 0 50px;
+  border: 1px solid #ddd;
+  font-size: 20px;
+  padding: 0 20px;
+  border-right: none;
+}
+form .search input:focus {
+  border-color: #6495ed;
+}
+form .search input:focus + button {
+  border-color: #7952b3;
+  background: #7952b3;
+  color: #fff;
+  transition: background-color 0.3s;
+}
+form .search input:focus + button:hover {
+  background-color: #8560bd;
+}
+
+form .search button {
+  width: 130px;
+  height: 50px;
+  border-radius: 0 50px 50px 0;
+  font-size: 20px;
+  background: #f5f5f5;
+  color: #333;
+  border: 2px solid #ddd;
+  cursor: pointer;
+}
+form .search button:hover {
+  background: #eee;
+}
+.result {
+  width: 700px;
+}
+.result .video-item {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  border: none;
+  padding: 15px;
+}
+.result .video-item img {
+  height: 120px;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+.result .video-item .video-details > div {
+  display: flex;
+  align-items: center;
+  padding-bottom: 15px;
+  padding-left: 10px;
+}
+.result .video-item .video-details span {
+  color: rgba(34, 34, 34, 0.6);
+  width: 140px;
+  color: azure;
+}
+.result .video-item .video-details .title {
+  font-size: 25px;
+  font-weight: 800;
+}
+.result ul {
+  margin-top: 30px;
+}
+.result ul li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  height: 60px;
+  border-radius: 60px;
+  padding: 0 10px 0 30px;
+}
+.result ul li > div span {
+  font-size: 18px;
+  color: rgba(34, 34, 34, 0.6);
+  margin-right: 15px;
+  padding-right: 15px;
+  border-right: 1px solid #ddd;
+  color: azure;
+}
+.result ul li > div {
+  margin-right: 40px;
+  font-size: 20px;
+  font-weight: 800;
+}
+.result ul li a {
+  margin-left: auto;
+  height: 40px;
+  border-radius: 40px;
+  background: #ffc107;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
+  transition: background-color 0.2s;
+}
+.result ul li a:hover {
+  background: #e7b00b;
+} /*# sourceMappingURL=style.css.map */
+
+/* LOADER ANIMATION */
+
+.lds-facebook {
+  float: left;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-facebook div {
+  float: left;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: #fff;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-facebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+.lds-facebook div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+@keyframes lds-facebook {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%,
+  100% {
+    top: 24px;
+    height: 32px;
+  }
+}
+
+/* LOADER ANIMATION */
+
+.txt {
+  float: right;
+  padding-top: 24px;
+  padding-left: 12px;
+}
+
+.loader {
+  padding-top: 3rem;
+  font-size: 24px;
+  letter-spacing: 3px;
+  color: azure;
+  display: none;
+}
+
+.footer {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
